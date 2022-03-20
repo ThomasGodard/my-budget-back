@@ -14,7 +14,7 @@ public class TransactionDto {
     private String label;
     
     @NotNull
-    private Instant levyDate;
+    private Instant transactionDate;
 
     @NotNull
     private double amount;

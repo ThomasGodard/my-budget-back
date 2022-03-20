@@ -28,10 +28,10 @@ public class EstimatedTransaction  {
     private String label;
 
     @Column(columnDefinition = "TIMESTAMP(0)", nullable = false)
-    private Instant startLevyDate;
+    private Instant StartDate;
 
     @Column(columnDefinition = "TIMESTAMP(0)")
-    private Instant endLevyDate;
+    private Instant EndDate;
     
     @Column(nullable = false)
     private double amount;

@@ -2,6 +2,7 @@ package com.tgodard.mybudget.models.dto;
 
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
 
@@ -13,10 +14,10 @@ public class EstimatedTransactionDto {
     @NotNull
     private String label;
 
-    @NotNull
-    private Instant firstLevyDate;
+    @NotEmpty
+    private String StartDate;
 
-    private Instant lastLevyDate;
+    private String EndDate;
 
     @NotNull
     private double amount;

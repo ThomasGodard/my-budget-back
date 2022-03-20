@@ -28,7 +28,7 @@ public class Transaction {
     private String label;
 
     @Column(columnDefinition = "TIMESTAMP(0)", nullable = false)
-    private Instant levyDate;
+    private Instant transactionDate;
 
     @Column(nullable = false)
     private double amount;

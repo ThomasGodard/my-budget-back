@@ -30,8 +30,8 @@ public class EstimatedTransactionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EstimatedTransaction>> getEspenses() {
-        List<EstimatedTransaction> transactions = this.estimatedTransactionService.findAll();
+    public ResponseEntity<List<EstimatedTransactionDto>> getEspenses() {
+        List<EstimatedTransactionDto> transactions = this.estimatedTransactionService.findAll();
         return ResponseEntity.ok(transactions);
     }
 
