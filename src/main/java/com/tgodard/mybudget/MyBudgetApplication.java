@@ -36,22 +36,21 @@ public class MyBudgetApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        EstimatedTransaction estimatedTransaction = new EstimatedTransaction();
-        estimatedTransaction.setStartDate(Instant.now());
-        estimatedTransaction.setEndDate(Instant.now());
-        estimatedTransaction.setAmount(100.00);
-        estimatedTransaction.setLabel("tr1");
-        EstimatedTransaction estimatedTransaction2 = new EstimatedTransaction();
-        estimatedTransaction2.setStartDate(Instant.now().minus(1L, ChronoUnit.DAYS));
-        estimatedTransaction2.setEndDate(Instant.now().minus(1L, ChronoUnit.DAYS));
-        estimatedTransaction2.setAmount(100.25);
-        estimatedTransaction2.setLabel("tr2");
-        this.estimatedTransactionDao.saveAll(Arrays.asList(estimatedTransaction, estimatedTransaction2));
-
-        Transaction transaction = new Transaction();
-        transaction.setLabel("test");
-        transaction.setAmount(0.15);
-        transaction.setTransactionDate(Instant.now());
-        this.transactionDao.save(transaction);
+//        EstimatedTransaction estimatedTransaction = new EstimatedTransaction();
+//        estimatedTransaction.setStartDate(Instant.now());
+//        estimatedTransaction.setEndDate(Instant.now());
+//        estimatedTransaction.setAmount(100.00);
+//        estimatedTransaction.setName("tr1");
+//
+//        Transaction transaction = new Transaction();
+//        transaction.setName("test");
+//        transaction.setAmount(0.15);
+//        transaction.setDate(Instant.now());
+//        estimatedTransaction.setTransaction(transaction);
+//        this.estimatedTransactionDao.save(estimatedTransaction);
+//
+//        estimatedTransaction.setTransaction(null);
+//        estimatedTransactionDao.save(estimatedTransaction);
+//        this.transactionDao.delete(transaction);
     }
 }

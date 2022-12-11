@@ -15,10 +15,6 @@ public class ModelMapperConfig {
 
     public ModelMapperConfig() {
         this.modelMapper = new ModelMapper();
-        modelMapper.createTypeMap(TransactionDto.class, Transaction.class);
-        modelMapper.createTypeMap(Transaction.class, TransactionDto.class);
-        modelMapper.createTypeMap(EstimatedTransactionDto.class, EstimatedTransaction.class);
-        modelMapper.createTypeMap(EstimatedTransaction.class, EstimatedTransactionDto.class);
     }
 
     @Bean

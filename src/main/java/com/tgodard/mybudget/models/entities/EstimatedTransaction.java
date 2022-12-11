@@ -6,10 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Instant;
 import java.util.Objects;
 
@@ -25,28 +22,20 @@ public class EstimatedTransaction  {
     private Long id;
 
     @Column(nullable = false)
-    private String label;
+    private String name;
 
     @Column(columnDefinition = "TIMESTAMP(0)", nullable = false)
-    private Instant StartDate;
+    private Instant startDate;
 
     @Column(columnDefinition = "TIMESTAMP(0)")
-    private Instant EndDate;
-    
+    private Instant endDate;
+
     @Column(nullable = false)
     private double amount;
 
-    @Override
+    @ManyToOne
+    private Category category;
 
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        EstimatedTransaction that = (EstimatedTransaction) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private Transaction transaction;
 }
