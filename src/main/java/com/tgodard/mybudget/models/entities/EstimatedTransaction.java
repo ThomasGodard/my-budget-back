@@ -8,11 +8,13 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 @Entity
 public class EstimatedTransaction  {
@@ -25,10 +27,15 @@ public class EstimatedTransaction  {
     private String name;
 
     @Column(columnDefinition = "TIMESTAMP(0)", nullable = false)
-    private Instant startDate;
+    @Temporal(TemporalType.DATE)
+    private LocalDate startDate;
 
     @Column(columnDefinition = "TIMESTAMP(0)")
-    private Instant endDate;
+    @Temporal(TemporalType.DATE)
+    private LocalDate endDate;
+
+    @Column(columnDefinition = "TIMESTAMP(0)")
+    private Instant creationDate;
 
     @Column(nullable = false)
     private double amount;
@@ -36,6 +43,6 @@ public class EstimatedTransaction  {
     @ManyToOne
     private Category category;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Transaction transaction;
+    @OneToMany(mappedBy = "estimatedTransaction", cascade = {CascadeType.PERSIST})
+    private Set<Transaction> transaction;
 }

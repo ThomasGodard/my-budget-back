@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
 import java.time.temporal.TemporalUnit;
@@ -36,21 +37,5 @@ public class MyBudgetApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        EstimatedTransaction estimatedTransaction = new EstimatedTransaction();
-//        estimatedTransaction.setStartDate(Instant.now());
-//        estimatedTransaction.setEndDate(Instant.now());
-//        estimatedTransaction.setAmount(100.00);
-//        estimatedTransaction.setName("tr1");
-//
-//        Transaction transaction = new Transaction();
-//        transaction.setName("test");
-//        transaction.setAmount(0.15);
-//        transaction.setDate(Instant.now());
-//        estimatedTransaction.setTransaction(transaction);
-//        this.estimatedTransactionDao.save(estimatedTransaction);
-//
-//        estimatedTransaction.setTransaction(null);
-//        estimatedTransactionDao.save(estimatedTransaction);
-//        this.transactionDao.delete(transaction);
     }
 }

@@ -7,7 +7,9 @@ import javax.persistence.*;
 import java.time.Instant;
 import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@RequiredArgsConstructor
 @Entity
 public class Transaction {
 
@@ -26,4 +28,7 @@ public class Transaction {
 
     @ManyToOne
     private Category category;
+
+    @ManyToOne
+    private EstimatedTransaction estimatedTransaction;
 }
