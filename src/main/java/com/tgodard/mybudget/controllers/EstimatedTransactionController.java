@@ -6,11 +6,7 @@ import com.tgodard.mybudget.models.entities.EstimatedTransaction;
 import com.tgodard.mybudget.services.EstimatedTransactionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,12 +26,12 @@ public class EstimatedTransactionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<EstimatedTransactionDto>> getEspenses() {
+    public ResponseEntity<List<EstimatedTransactionDto>> getTransactions() {
         List<EstimatedTransactionDto> transactions = this.estimatedTransactionService.findAll();
         return ResponseEntity.ok(transactions);
     }
 
-    @PostMapping
+    @PutMapping
     public ResponseEntity<EstimatedTransaction> saveTransaction(@Valid @RequestBody EstimatedTransactionDto estimatedTransactionDto) {
         EstimatedTransaction estimatedTransaction = this.objectMapper.convertValue(estimatedTransactionDto, EstimatedTransaction.class);
         estimatedTransaction = this.estimatedTransactionService.save(estimatedTransaction);

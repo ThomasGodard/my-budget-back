@@ -1,16 +1,22 @@
 package com.tgodard.mybudget.models.entities;
 
-import lombok.*;
-import org.hibernate.Hibernate;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.Instant;
-import java.util.Objects;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @RequiredArgsConstructor
 @Entity
+@Table(uniqueConstraints = {
+        @UniqueConstraint(
+                name = "UniqueTransactionDateForEstimated",
+                columnNames = {"date", "estimated_transaction_id"}
+        )
+})
 public class Transaction {
 
     @Id
@@ -21,8 +27,7 @@ public class Transaction {
     private String name;
 
     @Column(columnDefinition = "TIMESTAMP(0)", nullable = false)
-    private Instant date;
-
+    private LocalDate date;
     @Column(nullable = false)
     private double amount;
 
@@ -30,5 +35,6 @@ public class Transaction {
     private Category category;
 
     @ManyToOne
+    @JoinColumn(name = "estimated_transaction_id")
     private EstimatedTransaction estimatedTransaction;
 }

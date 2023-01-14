@@ -11,12 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalUnit;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 
 @Slf4j
 @SpringBootApplication
@@ -37,5 +31,21 @@ public class MyBudgetApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        EstimatedTransaction estimatedTransaction = new EstimatedTransaction();
+        estimatedTransaction.setAmount(80);
+        estimatedTransaction.setName("new name");
+        estimatedTransaction.setCreationDate(Instant.now());
+        estimatedTransaction.setStartDate(LocalDate.now());
+        estimatedTransactionDao.save(estimatedTransaction);
+
+        Transaction transaction = new Transaction();
+        transaction.setAmount(100);
+        transaction.setName("new name");
+        transaction.setDate(LocalDate.now());
+        transaction.setEstimatedTransaction(estimatedTransaction);
+
+        transactionDao.save(transaction);
+
+        estimatedTransactionDao.delete(estimatedTransaction);
     }
 }
